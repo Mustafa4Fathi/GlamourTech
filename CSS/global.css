@@ -1,0 +1,144 @@
+:root{
+    --primary-color:#2da894;
+    --secondary-color-navbar:#2fbda5;
+    --secondary-color-hover-1: #4ef8dc;
+    --secondary-color-hover-2: cadetblue;
+    --color-nav-border:#555;
+    --secondary-color-background:#c9fff6;
+    --text-color:#363333;
+    --footer-background:#333;
+    --footer-color:#343030;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 0.85;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header styling */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+header .logo h1 {
+    font-size: 24px;
+}
+
+header .search-bar input {
+    padding: 7px;
+    border-radius: 10px;
+    width: 650px;
+}
+
+header .icons {
+    display: flex;
+    gap: 15px;
+}
+
+header .icons .icon {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+header .icons .icon.hidden {
+    display: none;
+}
+
+/* Navbar styling and Categories Dropdown menu Styling */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--secondary-color-navbar);
+    font-family: arial;
+    font-size: 14px;
+}
+
+nav ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: relative;
+}
+
+nav ul li {
+    display: inline-block;
+    background-color: var(--secondary-color-navbar);
+}
+
+nav a {
+    display: block;
+    padding: 0 30px;
+    color: white;
+    line-height: 45px;
+    text-decoration: none;
+}
+
+nav a:hover { 
+    background-color: var(--secondary-color-hover-2); 
+}
+
+nav ul ul {
+    display: none;
+    position: absolute;
+    top: 45px;     
+}
+
+nav ul li:hover > ul {
+    display: inherit;
+}
+
+nav ul li:hover > a {
+    background-color: var(--secondary-color-hover-2); 
+}
+
+nav ul ul li {
+    width: 150px;
+    float: none;
+    display: list-item;
+    position: relative;
+    border: 1px solid var(--color-nav-border);
+}
+
+nav ul ul ul li {
+    position: relative;
+    top: -45px; 
+    left: 150px;
+}
+
+/* Main content styling */
+main {
+    margin-top: 40px;
+    text-align: center;
+}
+
+main h2 {
+    margin-bottom: 10px;
+}
+
+main p {
+    font-size: 18px;
+}
+
+/* Footer styling */
+footer {
+    background-color: var(--secondary-color-navbar);
+    color: var(--footer-color);
+    text-align: center;
+    padding: 20px 0;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}

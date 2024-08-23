@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlamourTech</title>
+    <link rel="stylesheet" href="CSS/global.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>GlamourTech</h1>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search for products...">
+        </div>
+        <div class="icons">
+            <a href="login.html" class="icon">Login</a>
+            <a href="#" class="icon" data-page="wishlist">Wishlist</a>
+            <a href="#" class="icon" data-page="cart">Cart</a>
+            <a href="profile.html" class="icon hidden">Profile</a>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#" data-page="home">Home</a></li>
+            <li><a href="#" data-page="categories">Categories ▾</a>
+                <ul>
+                    <li><a href="#" data-page="categories">All Categories</a></li>
+                    <li><a href="#" data-page="electronics">Electronics ▸</a>
+                        <ul>
+                            <li><a href="#">Link 1</a></li>
+                            <li><a href="#">Link 2</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" data-page="fashion">Fashion ▸</a>
+                        <ul>
+                            <li><a href="#">Link 1</a></li>
+                            <li><a href="#">Link 2</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="#" data-page="about">About</a></li>
+            <li><a href="#" data-page="contact">Contact</a></li>
+        </ul>
+    </nav>
+    <main id="main-content">
+        <!-- Content will load here -->
+    </main>
+    <footer>
+        <p>&copy; 2024 GlamourTech. All rights reserved.</p>
+    </footer>
+    <script src="JS/main.js"></script>
+</body>
+</html>
