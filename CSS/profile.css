@@ -1,0 +1,48 @@
+
+aside {
+    float: left;
+    width: 20%;
+    background-color: #f4f4f4;
+    padding: 20px;
+    height: 100vh;
+}
+
+aside ul {
+    list-style: none;
+    padding: 0;
+}
+
+aside ul li {
+    margin-bottom: 10px;
+}
+
+aside ul li a {
+    color: #333;
+    text-decoration: none;
+}
+
+aside ul li a:hover {
+    text-decoration: underline;
+}
+
+#profile-section {
+    margin-left: 25%;
+    padding: 20px;
+}
+
+#orders-section {
+    margin-left: 25%;
+    padding: 20px;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    aside {
+        width: 100%;
+        height: auto;
+    }
+
+    #profile-section, #orders-section {
+        margin-left: 0;
+    }
+}
