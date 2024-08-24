@@ -1,4 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+    document.querySelectorAll('.icons a').forEach(iconLink =>{
+        iconLink.addEventListener('click', (event) => {
+            const href = event.target.getAttribute('href');
+            if (href && href !== '#') {
+                event.preventDefault();
+                window.location.href = href;
+            }
+        })
+    })
+
     const loginIcon = document.getElementById('login-icon');
     const profileIcon = document.getElementById('profile-icon');
     

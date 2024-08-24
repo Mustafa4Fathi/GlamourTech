@@ -2,7 +2,7 @@
     --primary-color:#2da894;
     --secondary-color-navbar:#2fbda5;
     --secondary-color-hover-1: #4ef8dc;
-    --secondary-color-hover-2: cadetblue;
+    --secondary-color-hover-2: #5f9ea0;
     --color-nav-border:#555;
     --secondary-color-background:#c9fff6;
     --text-color:#363333;
@@ -16,10 +16,15 @@
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--secondary-color-background);
+    background: linear-gradient(to right, #e2e2e2, #c9fff9);
     font-family: Arial, sans-serif;
     line-height: 0.85;
     margin: 0;
     padding: 0;
+    min-height: 100vh;
 }
 
 /* Header styling */
@@ -29,7 +34,7 @@ header {
     align-items: center;
     padding: 10px;
     background-color: var(--primary-color);
-    color: #fff;
+    color: var(--text-color);
 }
 
 header .logo h1 {
@@ -81,7 +86,7 @@ nav ul li {
 nav a {
     display: block;
     padding: 0 30px;
-    color: white;
+    color: var(--text-color);
     line-height: 45px;
     text-decoration: none;
 }
@@ -120,7 +125,11 @@ nav ul ul ul li {
 
 /* Main content styling */
 main {
-    margin-top: 40px;
+    flex: 1;
+    margin-top: 30px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
     text-align: center;
 }
 
@@ -134,11 +143,12 @@ main p {
 
 /* Footer styling */
 footer {
-    background-color: var(--secondary-color-navbar);
     color: var(--footer-color);
-    text-align: center;
-    padding: 20px 0;
-    position: absolute;
+    border-top: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    padding: 24px 20px;
+    position:relative;
     width: 100%;
     bottom: 0;
 }
