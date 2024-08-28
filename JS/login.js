@@ -23,7 +23,7 @@ document.querySelector('.sign-in form').addEventListener('submit', function(e) {
 
     if (existingUser) {
         if (existingUser.password === password) {
-            window.location.href = 'homepage.html';
+            window.location.href = 'index.html';
         } else {
             errorMessage.textContent = 'Incorrect password. Please try again.';
             errorMessage.style.color = 'red';
@@ -50,7 +50,7 @@ document.querySelector('.sign-up form').addEventListener('submit', function(e) {
     if (!existingUser) {
         users.push({ name, email, password });
         localStorage.setItem('users', JSON.stringify(users));
-        window.location.href = 'homepage.html';
+        window.location.href = 'index.html';
     } else {
         errorMessage.textContent = 'This email is already registered. Please sign in.';
         errorMessage.style.color = 'yellow';

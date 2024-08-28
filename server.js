@@ -1,6 +1,6 @@
 const express = require('express');
 const fs = require('fs');
-const path = require('path');
+const path = require('./data');
 const app = express();
 const port = 3000;
 
@@ -16,7 +16,7 @@ const readJSONFile = (filename) => {
     });
 };
 
-// Endpoint للقراءة بيانات المستخدمين
+// Endpoint for reading user data
 app.get('/api/customers', async (req, res) => {
     try {
         const data = await readJSONFile('customers.json');

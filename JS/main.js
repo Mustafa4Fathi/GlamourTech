@@ -1,57 +1,65 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const mainContent = document.getElementById('main-content');
+    const navLinks = document.querySelectorAll('nav a[data-page], .icons a[data-page]');
 
-    document.querySelectorAll('.icons a').forEach(iconLink =>{
-        iconLink.addEventListener('click', (event) => {
-            const href = event.target.getAttribute('href');
-            if (href && href !== '#') {
-                event.preventDefault();
-                window.location.href = href;
-            }
-        })
-    })
+    // تحميل الصفحة الافتراضية عند تحميل الصفحة
+    loadPage('home.html');
 
-    const loginIcon = document.getElementById('login-icon');
-    const profileIcon = document.getElementById('profile-icon');
-    
-    // Check if user is logged in
-    const isLoggedIn = localStorage.getItem('token');
-
-    if (isLoggedIn) {
-        loginIcon.style.display = 'none';
-        profileIcon.style.display = 'block';
-    } else {
-        loginIcon.style.display = 'block';
-        profileIcon.style.display = 'none';
-    }
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    // Set click listeners for links
-    document.querySelectorAll('nav a, .icons a').forEach(link => {
+    // إعداد مستمعين للأحداث لكل رابط
+    navLinks.forEach(link => {
         link.addEventListener('click', (event) => {
             event.preventDefault();
             const page = event.target.getAttribute('data-page');
-            if (page) {
-                loadPage(page);
-            }
+            loadPage(`${page}.html`);
         });
     });
 
+    // دالة لتحميل الصفحة باستخدام AJAX
     function loadPage(page) {
-        fetch(`${page}.html`)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
+        fetch(page)
+            .then(response => response.text())
+            .then(data => {
+                mainContent.innerHTML = data;
+
+                // إذا كانت الصفحة التي تم تحميلها هي profile.html، قم بإعداد الأحداث
+                if (page === 'profile.html') {
+                    setupProfilePage();
                 }
-                return response.text();
-            })
-            .then(content => {
-                document.getElementById('main-content').innerHTML = content;
             })
             .catch(error => {
-                console.error('There was a problem with the fetch operation:', error);
+                mainContent.innerHTML = `<p>Error loading page: ${error}</p>`;
             });
     }
 
-    loadPage('home');
+    // إعداد أحداث صفحة البروفايل
+    function setupProfilePage() {
+        const profileSection = document.getElementById('profile-section');
+        const ordersSection = document.getElementById('orders-section');
+
+        // تعيين العرض الافتراضي
+        profileSection.style.display = 'block';
+        ordersSection.style.display = 'none';
+
+        // تعيين الأحداث للتبديل بين الأقسام
+        document.querySelector('aside ul li a[href="#profile"]').addEventListener('click', (event) => {
+            event.preventDefault();
+            profileSection.style.display = 'block';
+            ordersSection.style.display = 'none';
+        });
+
+        document.querySelector('aside ul li a[href="#orders"]').addEventListener('click', (event) => {
+            event.preventDefault();
+            profileSection.style.display = 'none';
+            ordersSection.style.display = 'block';
+        });
+
+        // تعيين حدث تسجيل الخروج
+        document.querySelector('aside ul li a[onclick="signOut()"]').addEventListener('click', signOut);
+    }
+
+    // دالة تسجيل الخروج
+    function signOut() {
+        alert("You have been signed out.");
+        // يمكن إضافة وظائف إضافية لتسجيل الخروج هنا
+    }
 });
