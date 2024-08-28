@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function loadPage(page) {
-        fetch(`${page}.html`)
+        fetch(`pages/user/${page}.html`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
