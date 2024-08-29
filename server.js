@@ -16,7 +16,7 @@ const readJSONFile = (filename) => {
     });
 };
 
-// Endpoint للقراءة بيانات المستخدمين
+// Endpoint for reading user data
 app.get('/api/customers', async (req, res) => {
     try {
         const data = await readJSONFile('customers.json');
