@@ -7,7 +7,8 @@ body {
     background-color: #c9fff6;
 }
 
-.sidebar {
+    
+    .sidebar {
     position: fixed;
     width: 250px;
     height: 100%;
@@ -83,13 +84,13 @@ body {
 
 
 /* Main Content */
-.main-content {
+.content {
     margin-left: 250px;
     padding: 20px;
     transition: margin-left 0.3s ease;
 }
 
-.main-content .header {
+.content .header {
     padding: 20px;
     text-align: center;
     background-color: #ecf0f1;
