@@ -1,65 +1,59 @@
 document.addEventListener('DOMContentLoaded', () => {
     const mainContent = document.getElementById('main-content');
-    const navLinks = document.querySelectorAll('nav a[data-page], .icons a[data-page]');
+    const loginIcon = document.getElementById('login-icon');
+    const profileIcon = document.getElementById('profile-icon');
 
-    // تحميل الصفحة الافتراضية عند تحميل الصفحة
-    loadPage('home.html');
+    // Check if user is logged in
+    const isLoggedIn = localStorage.getItem('token');
+    if (isLoggedIn) {
+        loginIcon.style.display = 'none';
+        profileIcon.style.display = 'block';
+    } else {
+        loginIcon.style.display = 'block';
+        profileIcon.style.display = 'none';
+    }
 
-    // إعداد مستمعين للأحداث لكل رابط
-    navLinks.forEach(link => {
-        link.addEventListener('click', (event) => {
+    // Set event listener for navigation and icon clicks using event delegation
+    document.body.addEventListener('click', (event) => {
+        const target = event.target;
+
+        // Handle nav and icon link clicks
+        if (target.matches('nav a, .icons a')) {
             event.preventDefault();
-            const page = event.target.getAttribute('data-page');
-            loadPage(`${page}.html`);
-        });
+
+            const href = target.getAttribute('href');
+            const page = target.getAttribute('data-page');
+
+            if (href && href !== '#') {
+                window.location.href = href; // Full page load for external links
+            } else if (page) {
+                loadPage(page); // Load page dynamically
+            }
+        }
     });
 
-    // دالة لتحميل الصفحة باستخدام AJAX
+    // Function to load page content dynamically
     function loadPage(page) {
-        fetch(page)
-            .then(response => response.text())
-            .then(data => {
-                mainContent.innerHTML = data;
-
-                // إذا كانت الصفحة التي تم تحميلها هي profile.html، قم بإعداد الأحداث
-                if (page === 'profile.html') {
-                    setupProfilePage();
+        fetch(`pages/user/${page}.html`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
                 }
+                return response.text();
+            })
+            .then(content => {
+                mainContent.innerHTML = content;
+
+                // Dynamically load the corresponding JavaScript for the page
+                const script = document.createElement('script');
+                script.src = `/JS/${page}.js`;
+                document.body.appendChild(script);
             })
             .catch(error => {
-                mainContent.innerHTML = `<p>Error loading page: ${error}</p>`;
+                console.error('There was a problem with the fetch operation:', error);
             });
     }
 
-    // إعداد أحداث صفحة البروفايل
-    function setupProfilePage() {
-        const profileSection = document.getElementById('profile-section');
-        const ordersSection = document.getElementById('orders-section');
-
-        // تعيين العرض الافتراضي
-        profileSection.style.display = 'block';
-        ordersSection.style.display = 'none';
-
-        // تعيين الأحداث للتبديل بين الأقسام
-        document.querySelector('aside ul li a[href="#profile"]').addEventListener('click', (event) => {
-            event.preventDefault();
-            profileSection.style.display = 'block';
-            ordersSection.style.display = 'none';
-        });
-
-        document.querySelector('aside ul li a[href="#orders"]').addEventListener('click', (event) => {
-            event.preventDefault();
-            profileSection.style.display = 'none';
-            ordersSection.style.display = 'block';
-        });
-
-        // تعيين حدث تسجيل الخروج
-        document.querySelector('aside ul li a[onclick="signOut()"]').addEventListener('click', signOut);
-    }
-
-    // دالة تسجيل الخروج
-    function signOut() {
-        alert("You have been signed out.");
-        // يمكن إضافة وظائف إضافية لتسجيل الخروج هنا
-    }
+    // Load the default home page on initial load
+    loadPage('home');
 });
