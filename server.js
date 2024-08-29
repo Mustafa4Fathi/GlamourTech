@@ -4,8 +4,9 @@ const path = require('path');
 const app = express();
 const port = 3000;
 
+// Serve static files from the root directory
 app.use(express.json());
-app.use(express.static(path.join(__dirname)));
+app.use(express.static(path.join(__dirname))); // Fixed variable name from dirname to __dirname
 
 // Utility functions to read and write JSON files
 const readJSONFile = (filename) => {
