@@ -1,16 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
     const mainContent = document.getElementById('main-content');
-    const loginIcon = document.getElementById('login-icon');
-    const profileIcon = document.getElementById('profile-icon');
+
+    // Assume these IDs are correct or adjust accordingly
+    const loginIcon = document.querySelector('.icons .icon[href="pages/user/login.html"]');
+    const profileIcon = document.querySelector('.icons .icon[data-page="profile"]');
 
     // Check if user is logged in
     const isLoggedIn = localStorage.getItem('token');
     if (isLoggedIn) {
-        loginIcon.style.display = 'none';
-        profileIcon.style.display = 'block';
+        if (loginIcon) loginIcon.style.display = 'none';
+        if (profileIcon) profileIcon.style.display = 'block';
     } else {
-        loginIcon.style.display = 'block';
-        profileIcon.style.display = 'none';
+        if (loginIcon) loginIcon.style.display = 'block';
+        if (profileIcon) profileIcon.style.display = 'none';
     }
 
     // Set event listener for navigation and icon clicks using event delegation
