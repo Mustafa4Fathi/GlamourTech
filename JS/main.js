@@ -1,21 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
-
-    document.querySelectorAll('.icons a').forEach(iconLink =>{
-        iconLink.addEventListener('click', (event) => {
-            const href = event.target.getAttribute('href');
-            if (href && href !== '#') {
-                event.preventDefault();
-                window.location.href = href;
-            }
-        })
-    })
-
+    const mainContent = document.getElementById('main-content');
     const loginIcon = document.getElementById('login-icon');
     const profileIcon = document.getElementById('profile-icon');
-    
+
     // Check if user is logged in
     const isLoggedIn = localStorage.getItem('token');
-
     if (isLoggedIn) {
         loginIcon.style.display = 'none';
         profileIcon.style.display = 'block';
@@ -23,20 +12,27 @@ document.addEventListener('DOMContentLoaded', () => {
         loginIcon.style.display = 'block';
         profileIcon.style.display = 'none';
     }
-});
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Set click listeners for links
-    document.querySelectorAll('nav a, .icons a').forEach(link => {
-        link.addEventListener('click', (event) => {
+    // Set event listener for navigation and icon clicks using event delegation
+    document.body.addEventListener('click', (event) => {
+        const target = event.target;
+
+        // Handle nav and icon link clicks
+        if (target.matches('nav a, .icons a')) {
             event.preventDefault();
-            const page = event.target.getAttribute('data-page');
-            if (page) {
-                loadPage(page);
+
+            const href = target.getAttribute('href');
+            const page = target.getAttribute('data-page');
+
+            if (href && href !== '#') {
+                window.location.href = href; // Full page load for external links
+            } else if (page) {
+                loadPage(page); // Load page dynamically
             }
-        });
+        }
     });
 
+    // Function to load page content dynamically
     function loadPage(page) {
         fetch(`pages/user/${page}.html`)
             .then(response => {
@@ -46,12 +42,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 return response.text();
             })
             .then(content => {
-                document.getElementById('main-content').innerHTML = content;
+                mainContent.innerHTML = content;
+
+                // Dynamically load the corresponding JavaScript for the page
+                const script = document.createElement('script');
+                script.src = `/JS/${page}.js`;
+                document.body.appendChild(script);
             })
             .catch(error => {
                 console.error('There was a problem with the fetch operation:', error);
             });
     }
 
+    // Load the default home page on initial load
     loadPage('home');
 });
