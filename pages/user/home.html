@@ -1,34 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - GlamourTech</title>
-    <link rel="stylesheet" href="CSS/home.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+    rel="stylesheet"
+    />
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <link rel="stylesheet" href="C:\Users\ywsfy\Downloads\Depi-project\GlamourTech\CSS\home.css" />
+    <title>GlamourTech</title>
 </head>
 <body>
-    <div class="home-container">
-        <h1>Welcome to GlamourTech</h1>
-        <p>Your one-stop shop for Fashion and Electronics.</p>
-        <section class="featured-products">
-            <h2>Featured Products</h2>
-            <div class="product-list">
-                <div class="product-item">
-                    <h3>Product 1</h3>
-                    <p>Description of Product 1</p>
-                </div>
-                <div class="product-item">
-                    <h3>Product 2</h3>
-                    <p>Description of Product 2</p>
-                </div>
-                <!-- You can add more products here -->
-            </div>
-        </section>
-        <section class="latest-news">
-            <h2>Latest News</h2>
-            <p>Stay tuned for the latest updates from GlamourTech!</p>
-        </section>
+    <nav>
+        <h2>GlamourTech</h2>
+    <div id="menu-btn">
+        <i class="ri-menu-line"></i>
     </div>
-    <script src="JS/home.js"></script>
+    <ul id="nav-links">
+        <li><a href="#" class="nav-link navbar-link">Home</a></li>
+        <li class="dropdown-list">
+            <a href="#" class="nav-link navbar-link">Categories</a>
+            <div class="dropdown-content">
+                <a href="nav.html" class="nav-link navbar-link">Clothing</a>
+                <a href="electronics.html" class="nav-link navbar-link">Electronics</a>
+            </div>
+        </li> 
+        <li><a href="#about" >About us</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="images">
+        <img src="./assets/user.png" alt="">
+        <img src="./assets/wishlist.png" alt="">
+        <img src="./assets/cart.png" alt="">
+    </div>
+</nav>
+    <div class="swiper">
+</div>
+
+<div id="main-content">
+<header class="section__container header__container" id="home">
+    <div class="header__image">
+    <img src="assets/Shopping.jpg" alt="header" />
+    </div>
+    <div class="header__content">
+    <div>
+        <h1>Welcome</h1>
+        <a href="#" class="shop-now-btn" class="nav-link navbar-link">Shop Now</a>
+
+    </div>
+    </div>
+</header>
+
+<section class="section__container deals__container">
+    <div class="deals__card">
+    <h2 class="section__header">Shop with us</h2>
+    <p>Whatever you are looking for, we got you</p>
+    </div>
+    <div class="deals__card">
+    <span><i class="ri-cash-line"></i></span>
+    <h4>Save money</h4>
+    </div>
+    <div class="deals__card">
+    <span><i class="ri-calendar-schedule-line"></i></span>
+    <h4>shop at any time</h4>
+    </div>
+    <div class="deals__card">
+    <span><i class="ri-money-rupee-circle-line"></i></span>
+    <h4>Get updated with many products</h4>
+    </div>
+</section>
+
+
+
+<section class="section__container product__container" id="product">
+    <h2 class="section__header">Best offers</h2>
+    <div class="product__grid">
+    <div class="product__card">
+        <h4>Dress</h4>
+        <p>$99.00</p>
+        <img src="assets/dress.png" alt="product" />
+        <button class="shop-now-btn">Buy now</button>
+    </div>
+    <div class="product__card">
+        <h4>Blazer</h4>
+        <p>$99.00</p>
+        <img src="assets/blazer.png" alt="product" />
+        <button class="shop-now-btn">Buy now</button>
+    </div>
+    <div class="product__card">
+        <h4>Headphone</h4>
+        <p>$99.00</p>
+        <img src="assets/beat.png" alt="product" />
+        <button class="shop-now-btn">Buy now</button>
+    </div>
+    </div>
+</section>
+
+<section class="about-us" id="about">
+    <div class="content">
+        <img src="assets/logo.png" alt="About Us" class="about-image">
+        <div class="text-content">
+            <h1>About Us</h1>
+            <p>Welcome to GlamourTech, where innovation meets style. We are a leading e-commerce platform specializing in the latest electronics and cutting-edge fashion trends. Our mission is to bring you the best of both worlds, ensuring that you stay ahead in technology and fashion.</p>
+            <p>At GlamourTech, we understand that your needs and preferences are unique. That’s why we curate a diverse selection of high-quality electronics and trendy fashion items to fit every lifestyle. Whether you’re looking for the newest gadgets, stylish apparel, or exclusive accessories, we’ve got you covered.</p>
+            <p>Thank you for choosing GlamourTech. We look forward to serving you and helping you discover the perfect blend of technology and fashion.</p>
+        </div>
+    </div>
+</section>
+
+</div>
+
+    <footer class="footer" id="contact">
+    <div class="section__container footer__container">
+        <div class="footer__col">
+        <div class="footer__logo">
+            <a href="#" class="logo">GlamourTech</a>
+        </div>
+        <ul class="footer__socials">
+            <li>
+            <a href="#" class="footer-link"><i class="fab fa-facebook"></i></a>
+            </li>
+            <li>
+            <a href="#" class="footer-link"><i class="fab fa-twitter"></i></a>
+            </li>
+            <li>
+            <a href="#" class="footer-link"><i class="fab fa-linkedin"></i></a>
+            </li>
+            <li>
+            <a href="#" class="footer-link"><i class="fas fa-envelope"></i></a>
+            </li>
+        </ul>
+
+        </div>
+
+    </div>
+    </footer>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="C:\Users\ywsfy\Downloads\Depi-project\GlamourTech\JS\home.js"></script>
+
 </body>
 </html>
