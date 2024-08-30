@@ -18,7 +18,7 @@ document.querySelector('.sign-in form').addEventListener('submit', function(e) {
     let passwordInput = document.querySelector('.sign-in input[type="password"]');
     let errorMessage = document.querySelector('.sign-in .error-message');
 
-    // Fetch users from JSON file via the server
+    // Fetch users from the server
     fetch('/api/customers')
         .then(response => response.json())
         .then(users => {
@@ -28,7 +28,7 @@ document.querySelector('.sign-in form').addEventListener('submit', function(e) {
                 if (existingUser.password === password) {
                     // Store token to indicate login status
                     localStorage.setItem('token', 'true');
-                    window.location.href = 'index.html';
+                    window.location.href = '../index.html';
                 } else {
                     errorMessage.textContent = 'Incorrect password. Please try again.';
                     errorMessage.style.color = 'red';

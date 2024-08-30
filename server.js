@@ -6,7 +6,11 @@ const port = 3000;
 
 // Serve static files from the root directory
 app.use(express.json());
-app.use(express.static(path.join(__dirname))); // Fixed variable name from dirname to __dirname
+app.use(express.static(path.join(__dirname, 'pages')));
+app.use(express.static(path.join(__dirname, 'CSS')));
+app.use(express.static(path.join(__dirname, 'JS')));
+app.use(express.static(path.join(__dirname, 'data')));
+app.use(express.static(path.join(__dirname, 'images')));
 
 // Utility functions to read and write JSON files
 const readJSONFile = (filename) => {
