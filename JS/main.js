@@ -1,59 +1,99 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const mainContent = document.getElementById('main-content');
-    const loginIcon = document.getElementById('login-icon');
-    const profileIcon = document.getElementById('profile-icon');
+    const navbarLinks = document.querySelectorAll('.navbar-link');  
+    const contentDiv = document.getElementById('main-content');
 
-    // Check if user is logged in
-    const isLoggedIn = localStorage.getItem('token');
-    if (isLoggedIn) {
-        loginIcon.style.display = 'none';
-        profileIcon.style.display = 'block';
-    } else {
-        loginIcon.style.display = 'block';
-        profileIcon.style.display = 'none';
-    }
-
-    // Set event listener for navigation and icon clicks using event delegation
-    document.body.addEventListener('click', (event) => {
-        const target = event.target;
-
-        // Handle nav and icon link clicks
-        if (target.matches('nav a, .icons a')) {
-            event.preventDefault();
-
-            const href = target.getAttribute('href');
-            const page = target.getAttribute('data-page');
-
-            if (href && href !== '#') {
-                window.location.href = href; // Full page load for external links
-            } else if (page) {
-                loadPage(page); // Load page dynamically
-            }
-        }
-    });
-
-    // Function to load page content dynamically
-    function loadPage(page) {
-        fetch(`pages/user/${page}.html`)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.text();
-            })
-            .then(content => {
-                mainContent.innerHTML = content;
-
-                // Dynamically load the corresponding JavaScript for the page
-                const script = document.createElement('script');
-                script.src = `/JS/${page}.js`;
-                document.body.appendChild(script);
+    function loadContent(url) {
+        fetch(url)
+            .then(response => response.text())
+            .then(data => {
+                contentDiv.innerHTML = data; 
             })
             .catch(error => {
-                console.error('There was a problem with the fetch operation:', error);
+                contentDiv.innerHTML = `<p>Error loading content: ${error.message}</p>`;
             });
     }
 
-    // Load the default home page on initial load
-    loadPage('home');
+    navbarLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();  
+            const url = e.target.getAttribute('href');  
+            loadContent(url);  
+        });
+    });
+
+
+    const footerLinks = document.querySelectorAll('.footer-link');
+
+    footerLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const url = e.target.getAttribute('href');
+            loadContent(url);
+        });
+    });
 });
+
+
+
+
+const menuBtn = document.getElementById("menu-btn");
+const navLinks = document.getElementById("nav-links");
+const menuBtnIcon = menuBtn.querySelector("i");
+
+menuBtn.addEventListener("click", (e) => {
+    navLinks.classList.toggle("open");
+
+    const isOpen = navLinks.classList.contains("open");
+    menuBtnIcon.setAttribute("class", isOpen ? "ri-close-line" : "ri-menu-line");
+});
+
+navLinks.addEventListener("click", (e) => {
+    navLinks.classList.remove("open");
+    menuBtnIcon.setAttribute("class", "ri-menu-line");
+});
+
+
+
+const scrollRevealOption = {
+    distance: "50px",
+    origin: "bottom",
+    duration: 1000,
+};
+
+ScrollReveal().reveal(".header__image img", {
+    ...scrollRevealOption,
+    origin: "right",
+});
+ScrollReveal().reveal(".header__content div", {
+    duration: 1000,
+    delay: 500,
+});
+ScrollReveal().reveal(".header__content h1", {
+    ...scrollRevealOption,
+    delay: 1000,
+});
+ScrollReveal().reveal(".header__content p", {
+    ...scrollRevealOption,
+    delay: 1500,
+});
+
+ScrollReveal().reveal(".deals__card", {
+    ...scrollRevealOption,
+    interval: 500,
+});
+
+ScrollReveal().reveal(".about__image img", {
+    ...scrollRevealOption,
+    origin: "right",
+});
+ScrollReveal().reveal(".about__card", {
+    duration: 1000,
+    interval: 500,
+    delay: 500,
+});
+
+const swiper = new Swiper(".swiper", {
+    loop: true,
+});
+
+

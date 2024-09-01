@@ -1,57 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+    rel="stylesheet"
+    />
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <link rel="stylesheet" href="../GlamourTech/CSS/global.css" />
     <title>GlamourTech</title>
-    <link rel="stylesheet" href="CSS/global.css">
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <h1>GlamourTech</h1>
-        </div>
-        <div class="search-bar">
-            <input type="text" placeholder="Search for products...">
-        </div>
-        <div class="icons">
-            <a href="pages/user/login.html" class="icon">Login</a>
-            <a href="#" class="icon" data-page="wishlist">Wishlist</a>
-            <a href="#" class="icon" data-page="cart">Cart</a>
-            <a href="#" class="icon hidden" data-page="profile">Profile</a>
-        </div>
-    </header>
     <nav>
-        <ul>
-            <li><a href="#" data-page="home">Home</a></li>
-            <li><a href="#" data-page="categories">Categories ▾</a>
-                <ul>
-                    <li><a href="#" data-page="categories">All Categories</a></li>
-                    <li><a href="#" data-page="electronics">Electronics ▸</a>
-                        <ul>
-                            <li><a href="#">Link 1</a></li>
-                            <li><a href="#">Link 2</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#" data-page="fashion">Fashion ▸</a>
-                        <ul>
-                            <li><a href="#">Link 1</a></li>
-                            <li><a href="#">Link 2</a></li>
-                        </ul>
-                    </li>
-                </ul>
+        <h2>GlamourTech</h2>
+    <div id="menu-btn">
+        <i class="ri-menu-line"></i>
+    </div>
+    <ul id="nav-links">
+        <li><a href="#">Home</a></li>
+        <li class="dropdown-list">
+            <a href="#" class="nav-link navbar-link">Categories</a>
+            <div class="dropdown-content">
+                <a href="clothing.html" class="nav-link navbar-link">Clothing</a>
+                <a href="electronics.html" class="nav-link navbar-link">Electronics</a>
+            </div>
+        </li> 
+        <li><a href="../GlamourTech/pages/user/about.html" class="nav-link navbar-link">About us</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="images">
+        <img src="../GlamourTech/images/user.png" alt="">
+        <img src="../GlamourTech/images/wishlist.png" alt="">
+        <img src="../GlamourTech/images/cart.png" alt="">
+    </div>
+</nav>
+    <div class="swiper">
+</div>
+
+<div id="main-content">
+<header class="section__container header__container" id="home">
+    <div class="header__image">
+    <img src="../GlamourTech/images/Shopping.jpg" alt="header" />
+    </div>
+    <div class="header__content">
+    <div>
+        <h1>Welcome</h1>
+        <a href="#" class="shop-now-btn" class="nav-link navbar-link">Shop Now</a>
+
+    </div>
+    </div>
+</header>
+
+<section class="section__container deals__container">
+    <div class="deals__card">
+    <h2 class="section__header">Shop with us</h2>
+    <p>Whatever you are looking for, we got you</p>
+    </div>
+    <div class="deals__card">
+    <span><i class="ri-cash-line"></i></span>
+    <h4>Save money</h4>
+    </div>
+    <div class="deals__card">
+    <span><i class="ri-calendar-schedule-line"></i></span>
+    <h4>shop at any time</h4>
+    </div>
+    <div class="deals__card">
+    <span><i class="ri-money-rupee-circle-line"></i></span>
+    <h4>Get updated with many products</h4>
+    </div>
+</section>
+
+
+
+<section class="section__container product__container" id="product">
+    <h2 class="section__header">Best offers</h2>
+    <div class="product__grid">
+    <div class="product__card">
+        <h4>Dress</h4>
+        <p>$99.00</p>
+        <img src="../GlamourTech/images/dress.png" alt="product" />
+        <button class="shop-now-btn">Buy now</button>
+    </div>
+    <div class="product__card">
+        <h4>Blazer</h4>
+        <p>$99.00</p>
+        <img src="../GlamourTech/images/blazer.png" alt="product" />
+        <button class="shop-now-btn">Buy now</button>
+    </div>
+    <div class="product__card">
+        <h4>Headphone</h4>
+        <p>$99.00</p>
+        <img src="../GlamourTech/images/beat.png" alt="product" />
+        <button class="shop-now-btn">Buy now</button>
+    </div>
+    </div>
+</section>
+</div>
+
+    <footer class="footer" id="contact">
+    <div class="section__container footer__container">
+        <div class="footer__col">
+        <div class="footer__logo">
+            <a href="#" class="logo">GlamourTech</a>
+        </div>
+        <ul class="footer__socials">
+            <li>
+            <a href="#" class="footer-link"><i class="fab fa-facebook"></i></a>
             </li>
-            <li><a href="#" data-page="about">About</a></li>
-            <li><a href="#" data-page="contact">Contact</a></li>
+            <li>
+            <a href="#" class="footer-link"><i class="fab fa-twitter"></i></a>
+            </li>
+            <li>
+            <a href="#" class="footer-link"><i class="fab fa-linkedin"></i></a>
+            </li>
+            <li>
+            <a href="#" class="footer-link"><i class="fas fa-envelope"></i></a>
+            </li>
         </ul>
-    </nav>
-    <main id="main-content">
-        <!-- Content will load here -->
-    </main>
-    <footer>
-        <p>&copy; 2024 GlamourTech. All rights reserved.</p>
+
+        </div>
+
+    </div>
     </footer>
-    <script src="JS/main.js"></script>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="../GlamourTech/JS/main.js"></script>
+
 </body>
 </html>
